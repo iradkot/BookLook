@@ -10,26 +10,63 @@
 
 <body>
     <div class="container">
-        <div class="page-header">
-            <h1>BookLook</h1> <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+        <div class="row">
+            <div class="page-header">
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+                <div class="col-lg-6 col-md-6 col-sm-10">
+                    <h1>BookLook</h1> <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+            </div>
         </div>
-        <div class="col-lg-12">
-            <h2> Search by </h2>
-            <select class="search_by">
-                <option value="isbn">ISBN</option>
-                <option value="author">Author</option>
-                <option value="title">Title</option>
-            </select>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-1"></div>
+            <div class="col-lg-6 col-md-6 col-sm-10">
+                <h2> Search by </h2>
+                <select class="search_by">
+                	<option disabled selected value="selected"> choose</option>
+                    <option value="isbn">ISBN</option>
+                    <option value="author">Author</option>
+                    <option value="title">Title</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-1"></div>
         </div>
-        <input id="isbn-search" placeholder="Search">
-        <button type="button" class="btn btn-primary">Search</button>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-1"></div>
+            <div class="col-lg-6 col-md-6 col-sm-10">
+                <input id="isbn-search" placeholder="Search">
+                <button type="button" class="btn btn-primary">Search</button>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-1"></div>
+        </div>
     </div>
     <script id="menu-template" type="text/x-handlebars-template">
-        <div class="container books-info">
-            <h1>{{title}}</h1>
-            <p>{{description}}</p>
-            <h2>Written by {{author}} </h2>
-            <img src="{{image}}">
+        <div class="container book">
+            <div class="row top-buffer">
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+                <div class="col-lg-6 col-md-6 col-sm-10 title">
+                    <h1>{{title}}</h1>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+            </div>
+            <div class="row top-buffer">
+                <div class="col-lg-3 col-md-2"></div>
+                <div class="col-lg-6 col-md-8 col-sm-12 description">
+                    <p>{{description}}</p>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+            <div class="row top-buffer">
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+                <div class="col-lg-4 col-md-4 col-sm-8 image">
+                    <img class='imgwrapper' src={{image}}>
+                </div>
+                <div class="author col-lg-2 col-md-2 col-sm-2 author">
+                    <h2>author: {{author}} </h2>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-1"></div>
+            </div>
         </div>
     </script>
     <div class="results">

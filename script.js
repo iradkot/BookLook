@@ -16,16 +16,25 @@ var fetch = function($input, option) {
             var book_object = {};
             var newHTML;
             for (var i = 0; i < resault_length; i++) {
+                var image = '';
+                if (!data.items[i].volumeInfo.imageLinks) {
+                    image = 'http://img08.deviantart.net/64a9/i/2013/025/8/c/404_file_not_found_sign_by_zutheskunk-d5h6hf7.png';
+                } else {
+                    image = data.items[i].volumeInfo.imageLinks.smallThumbnail;
+                }
                 book_object = {
                     title: data.items[i].volumeInfo.title,
-                    author: data.items[i].volumeInfo.authors==undefined? "Author wasn't found": data.items[i].volumeInfo.authors[0] ,
-                    description: data.items[i].volumeInfo.description==undefined? "description wasn't found": data.items[i].volumeInfo.description,
-                    image: data.items[i].volumeInfo.imageLinks.smallThumbnail==undefined? 'https://cdn.browshot.com/static/images/not-found.png:': data.items[i].volumeInfo.imageLinks.smallThumbnail
+                    author: data.items[i].volumeInfo.authors == undefined ? "Author wasn't found" : data.items[i].volumeInfo.authors[0],
+                    description: data.items[i].volumeInfo.description == undefined ? "description wasn't found" : data.items[i].volumeInfo.description,
+                    image: image
 
                 };
                 newHTML = template(book_object);
                 $('.results').append(newHTML);
             }
+            $('.book').click(function() {
+                $(this).siblings().remove();
+            });
 
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -33,6 +42,9 @@ var fetch = function($input, option) {
         }
     });
 };
+
+
+
 
 $('button').click(function() {
     var $input = $('#isbn-search').val();
